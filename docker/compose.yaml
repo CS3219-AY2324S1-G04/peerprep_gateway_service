@@ -1,0 +1,24 @@
+services:
+  gateway_service_api:
+    image: peerprep_gateway_service_api
+    build:
+      context: .
+      dockerfile: ./dockerfile
+    networks:
+      - peerprep_network
+    ports:
+      - "${EXPOSED_PORT}:9100"
+    environment:
+      USER_SERVICE_HOST: ${USER_SERVICE_HOST}
+      QUESTION_SERVICE_HOST: ${QUESTION_SERVICE_HOST}
+      MATCHING_SERVICE_HOST: ${MATCHING_SERVICE_HOST}
+      ROOM_SERVICE_HOST: ${ROOM_SERVICE_HOST}
+      EDITOR_SERVICE_HOST: ${EDITOR_SERVICE_HOST}
+      CHAT_SERVICE_HOST: ${CHAT_SERVICE_HOST}
+      ATTEMPT_HISTORY_SERVICE_HOST: ${ATTEMPT_HISTORY_SERVICE_HOST}
+      WEBPAGE_SERVICE_HOST: ${WEBPAGE_SERVICE_HOST}
+
+networks:
+  peerprep_network:
+    name: peerprep
+    external: true

@@ -1,0 +1,5 @@
+set $user_service_host ${USER_SERVICE_HOST};
+
+location /user-service/ {
+  proxy_pass $user_service_host;
+}

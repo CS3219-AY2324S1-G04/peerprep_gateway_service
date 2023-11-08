@@ -1,0 +1,5 @@
+FROM nginx:1.25-bookworm
+
+COPY ./nginx/nginx.conf /etc/nginx/
+COPY ./nginx/default.conf /etc/nginx/conf.d/
+COPY ./nginx/*_service.conf.template /etc/nginx/templates/services/

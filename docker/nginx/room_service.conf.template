@@ -1,0 +1,14 @@
+set $room_service_host ${ROOM_SERVICE_HOST};
+
+# Block API endpoint for creating rooms
+location /room-service/rooms {
+  limit_except GET {
+      deny all;
+  }
+
+  proxy_pass $room_service_host;
+}
+
+location /room-service/ {
+  proxy_pass $room_service_host;
+}

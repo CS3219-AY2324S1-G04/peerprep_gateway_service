@@ -1,7 +1,7 @@
 set $room_service_host ${ROOM_SERVICE_HOST};
 
 # Block API endpoint for creating rooms
-location /room-service/rooms {
+location ~ /room-service/rooms/?$ {
   limit_except GET {
       deny all;
   }

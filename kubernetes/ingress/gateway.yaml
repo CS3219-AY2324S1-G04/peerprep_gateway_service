@@ -1,0 +1,35 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: gateway-service-gateway-ingress
+  namespace: peerprep
+  annotations:
+    nginx.ingress.kubernetes.io/server-snippet: |
+      set $room_service_host http://room-service-api-service;
+
+      location ~ /room-service/rooms/?$ {
+        limit_except GET {
+            deny all;
+        }
+
+        proxy_pass $room_service_host;
+      }
+spec:
+  rules:
+    - host: peerprep.us.to
+      http:
+        paths:
+          - path: /user-service
+            pathType: Prefix
+            backend:
+              service:
+                name: user-service-api-service
+                port:
+                  number: 9000
+          - path: /room-service
+            pathType: Prefix
+            backend:
+              service:
+                name: room-service-api-service
+                port:
+                  number: 9003

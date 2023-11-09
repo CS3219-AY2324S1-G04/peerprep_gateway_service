@@ -1,0 +1,33 @@
+# This config map is not deployed via the deploy script. It has to be deployed
+# manually.
+#
+# This config map is to be applied via the "--configmap" CLI argument of the
+# Ingress controller executable.
+# Refer to https://github.com/kubernetes/ingress-nginx/blob/main/docs/user-guide/cli-arguments.md
+#
+# On Minikube, the config can be applied as follows:
+# 1. Deploy this config map via kubectl.:
+#      kubectl apply -f nginx_ingress.yaml
+# 2. Edit the config file of the Ingress controller deployment:
+#      kubectl edit deployment.apps/ingress-nginx-controller -n ingress-nginx
+# 3. Navigate to "spec.template.spec.containers.args"
+# 4. Add the following line below "- /nginx-ingress-controller":
+#      - --configmap=nginx-ingress-config-map
+# 5. Make sure indentation is correct before saving the file.
+# 6. Verify that the pods are running:
+#      kubectl get pods -n ingress-nginx
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: nginx-ingress-config-map
+  # Ensure the namespace is the same as that of the NGINX controller deployment.
+  # It might be "nginx-ingress" instead depending on the way the NGINX
+  # controller was installed.
+  namespace: ingress-nginx
+data:
+  # Ensures the annotation prefix is as expected.
+  annotation-prefix: nginx.ingress.kubernetes.io
+
+  # Ensures annotation snippets will be utilised.
+  # Refer to https://github.com/kubernetes/ingress-nginx/blob/main/docs/user-guide/nginx-configuration/annotations.md#server-snippet
+  allow-snippet-annotations: "true"

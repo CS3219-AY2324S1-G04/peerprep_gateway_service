@@ -4,6 +4,9 @@ config_map_instructions="\n"\
 "Before deploying, we require that a config map be applied as the global\n"\
 "configuration for the NGINX controller. Refer to the\n"\
 "\"./config_maps/nginx_ingress.yaml\" file for more information.\n"\
+"\n"\
+"You may skip this message in future runs of the deployment script by\n"\
+"specifying the \"-y\" argument.\n"\
 "\n"
 
 should_skip_config_map_instructions=0

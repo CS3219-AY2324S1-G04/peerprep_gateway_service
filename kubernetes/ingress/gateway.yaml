@@ -26,6 +26,13 @@ spec:
                 name: user-service-api-service
                 port:
                   number: 9000
+          - path: /question-service
+            pathType: Prefix
+            backend:
+              service:
+                name: question-service-api-service
+                port:
+                  number: 9001
           - path: /room-service
             pathType: Prefix
             backend:

@@ -19,6 +19,13 @@ spec:
     - host: peerprep.us.to
       http:
         paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: webpage-service-api-service
+                port:
+                  number: 9010
           - path: /user-service
             pathType: Prefix
             backend:
@@ -40,3 +47,10 @@ spec:
                 name: room-service-api-service
                 port:
                   number: 9003
+          - path: /webpage-service
+            pathType: Prefix
+            backend:
+              service:
+                name: webpage-service-api-service
+                port:
+                  number: 9010

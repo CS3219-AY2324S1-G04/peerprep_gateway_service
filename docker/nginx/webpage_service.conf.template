@@ -1,0 +1,9 @@
+set $webpage_service_host ${WEBPAGE_SERVICE_HOST};
+
+location / {
+  proxy_pass $webpage_service_host;
+}
+
+location /webpage-service/ {
+  proxy_pass $webpage_service_host;
+}

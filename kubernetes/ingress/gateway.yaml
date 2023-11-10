@@ -40,6 +40,13 @@ spec:
                 name: question-service-api-service
                 port:
                   number: 9001
+          - path: /matching-service
+            pathType: Prefix
+            backend:
+              service:
+                name: matching-service-api-service
+                port:
+                  number: 9002
           - path: /room-service
             pathType: Prefix
             backend:

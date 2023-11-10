@@ -1,0 +1,5 @@
+set $matching_service_host ${MATCHING_SERVICE_HOST};
+
+location /matching-service/ {
+  proxy_pass $matching_service_host;
+}

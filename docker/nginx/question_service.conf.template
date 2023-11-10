@@ -1,0 +1,5 @@
+set $question_service_host ${QUESTION_SERVICE_HOST};
+
+location /question-service/ {
+  proxy_pass $question_service_host;
+}

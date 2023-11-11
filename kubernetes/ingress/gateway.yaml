@@ -15,6 +15,7 @@ metadata:
         proxy_pass $room_service_host;
       }
 spec:
+  ingressClassName: nginx
   rules:
     - host: peerprep.us.to
       http:

@@ -1,0 +1,10 @@
+set $attempt_history_service_host ${ATTEMPT_HISTORY_SERVICE_HOST};
+
+# Block API endpoint for creating attempt histories
+location ~ /attempt-history-service/add/?$ {
+  return 403;
+}
+
+location /attempt-history-service/ {
+  proxy_pass $attempt_history_service_host;
+}

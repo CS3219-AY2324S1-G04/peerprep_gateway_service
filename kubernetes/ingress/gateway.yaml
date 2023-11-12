@@ -5,14 +5,14 @@ metadata:
   namespace: peerprep
   annotations:
     nginx.ingress.kubernetes.io/server-snippet: |
-      set $room_service_host http://room-service-api-service;
-
+      # Block API endpoint for creating rooms
       location ~ /room-service/rooms/?$ {
-        limit_except GET {
-            deny all;
-        }
+        return 403;
+      }
 
-        proxy_pass $room_service_host;
+      # Block API endpoint for creating attempt histories
+      location ~ /attempt-history-service/add/?$ {
+        return 403;
       }
 spec:
   ingressClassName: nginx
@@ -55,6 +55,13 @@ spec:
                 name: room-service-api-service
                 port:
                   number: 9003
+          - path: /attempt-history-service
+            pathType: Prefix
+            backend:
+              service:
+                name: attempt-history-service-api-service
+                port:
+                  number: 9006
           - path: /webpage-service
             pathType: Prefix
             backend:

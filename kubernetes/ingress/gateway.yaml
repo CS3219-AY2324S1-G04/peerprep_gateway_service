@@ -4,6 +4,7 @@ metadata:
   name: gateway-service-gateway-ingress
   namespace: peerprep
   annotations:
+    nginx.ingress.kubernetes.io/websocket-services: "chat-service-api-service"
     nginx.ingress.kubernetes.io/server-snippet: |
       # Block API endpoint for creating rooms
       location ~ /room-service/rooms/?$ {
@@ -55,6 +56,13 @@ spec:
                 name: room-service-api-service
                 port:
                   number: 9003
+          - path: /chat-service
+            pathType: Prefix
+            backend:
+              service:
+                name: chat-service-api-service
+                port:
+                  number: 9005
           - path: /attempt-history-service
             pathType: Prefix
             backend:

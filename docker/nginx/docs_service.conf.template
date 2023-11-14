@@ -1,5 +1,0 @@
-set $docs_service_host ${DOCS_SERVICE_HOST};
-
-location /docs-service/ {
-  proxy_pass $docs_service_host;
-}

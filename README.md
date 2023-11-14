@@ -77,10 +77,6 @@ The exact path `/room-service/rooms/` is blocked. A HTTP 403 error will be retur
 
 The exact path `/attempt-history-service/add/` is blocked. A HTTP 403 error will be returned.
 
-### Docs Service
-
-> /docs-service
-
 ### Webpage Service
 
 > /webpage-service

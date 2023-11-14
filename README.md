@@ -40,3 +40,47 @@ This is intended for development use only. It is meant to make developing other 
 2. Ensure that the "peerprep" network exist: `docker network create -d bridge peerprep`
 3. Build the docker images and create the docker containers: `docker compose up --build`
     - To delete the docker containers, run: `docker compose down`
+
+## Proxy Paths
+
+Proxying is done via path prefix. If none of the following prefixes are a match, the request will be forwarded to Webpage Service.
+
+### User Service
+
+> /user-service
+
+### Question Service
+
+> /question-service
+
+### Matching Service
+
+> /matching-service
+
+### Room Service
+
+> /room-service
+
+The exact path `/room-service/rooms/` is blocked. A HTTP 403 error will be returned.
+
+### Editor Service
+
+> /editor-service
+
+### Chat Service
+
+> /chat-service
+
+### Attempt History Service
+
+> /attempt-history-service
+
+The exact path `/attempt-history-service/add/` is blocked. A HTTP 403 error will be returned.
+
+### Docs Service
+
+> /docs-service
+
+### Webpage Service
+
+> /webpage-service

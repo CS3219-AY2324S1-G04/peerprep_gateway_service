@@ -5,6 +5,11 @@ metadata:
   namespace: peerprep
   annotations:
     nginx.ingress.kubernetes.io/websocket-services: "chat-service-api-service, editor-service-api-service"
+    nginx.ingress.kubernetes.io/proxy-read-timeout: "3600"
+    nginx.ingress.kubernetes.io/proxy-send-timeout: "3600"
+    nginx.ingress.kubernetes.io/affinity: "cookie"
+    nginx.ingress.kubernetes.io/session-cookie-name: "route"
+    nginx.ingress.kubernetes.io/session-cookie-max-age: "172800"
     nginx.ingress.kubernetes.io/server-snippet: |
       # Block API endpoint for creating rooms
       location ~ /room-service/rooms/?$ {

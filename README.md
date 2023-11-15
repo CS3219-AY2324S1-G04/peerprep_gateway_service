@@ -14,7 +14,7 @@ This is the main deployment method for production.
 
 **Prerequisite**
 
-- Kubernetes cluster must be setup as specified in the [main repository](https://github.com/CS3219-AY2324S1/ay2324s1-course-assessment-g04#deployment).
+- Kubernetes cluster must be setup as specified in the [main repository](https://github.com/CS3219-AY2324S1/ay2324s1-course-assessment-g04/blob/master/project/project.md#g04-project).
 - All services must be deployed within the Kubernetes cluster.
   - It is possible to only deploy specific services. Requests to endpoints for services that are not deployed will not be forwarded.
 
